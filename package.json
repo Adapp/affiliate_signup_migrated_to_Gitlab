@@ -9,7 +9,6 @@
   "dependencies": {
     "express": "~3.0.0",
     "jade": "*",
-    "connect-assets": "~2.3.3",
     "node-native-zip": "*",
     "handlebars": "*",
     "q": "~0.8.12"

@@ -7,9 +7,9 @@ html(class="ng-app: signup;")
       script(type="text/javascript")
         document.createElement("edit-in-place");
 
-    != css('foundation.min')
-    != css('app')
-    != js('app')
+    link(rel="stylesheet", href="css/foundation.min.css")
+    link(rel="stylesheet", href="css/app.css")
+    script(src="js/lib/modernizr.foundation.js")
 
     script(type="text/javascript")
       if(!Modernizr.borderradius) {
@@ -18,5 +18,16 @@ html(class="ng-app: signup;")
 
     body(ng-controller="editPanelController")
       block content
+
+
+      script(src="js/lib/jquery.js")
+      script(src="js/lib/angular.min.js")
+      script(src="js/lib/foundation.min.js")
+      script(src="js/signup.js")
+      script(src="js/controllers/editPanel.js")
+      script(src="js/services/formFields.js")
+      script(src="js/directives/edit-in-place.js")
+      script(src="js/directives/reveal-on-load.js")
+      script(src="js/directives/signup-form.js")
 
 
