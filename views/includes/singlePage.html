@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="twelve columns">
+      <h2><edit-in-place value="formFields.headingHeadline"></edit-in-place></h2>
+      <p><edit-in-place value="formFields.headingHeadlineMessage" class="twelve columns"></edit-in-place></p>
+      <hr />
+    </div>
+  </div>
+
+    <div class="row" id="general_errors" ng-show="errorsOn">
+        <h5><edit-in-place value="formFields.errorGeneral" class="twelve columns"></edit-in-place></h5>
+        <div id="error_panel" class="twelve columns">
+            <div class="alert-box alert"><edit-in-place value="formFields.errorNoTerms" class="twelve columns"></edit-in-place></div>
+            <div class="alert-box alert"><edit-in-place value="formFields.errorServer" class="twelve columns"></edit-in-place></div>
+        </div>
+    </div>
+
+  <div class="row">
+    <div class="twelve columns">
+      <h3><edit-in-place value="formFields.headingUserDetails"></edit-in-place></h3>
+
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userFirstName"></edit-in-place></label></div>
+        <div class="eight columns" ng-class="{true: 'error', false: ''}[errorsOn]"><div class="disabled-input"></div>
+        <small ng-show="errorsOn"><edit-in-place value="formFields.errorEmpty"></edit-in-place></small> </div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userLastName"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      <div class="row">  
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userTitle"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userEmail"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userPassword"></edit-in-place></label></div>
+        <div class="eight columns" ><div class="disabled-input"></div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.userPasswordConfirm"></edit-in-place></label></div>
+        <div class="eight columns" ng-class="{true: 'error', false: ''}[errorsOn]">
+            <div class="disabled-input"></div>
+            <small ng-show="errorsOn"><edit-in-place value="formFields.errorBadMatch"></edit-in-place></small>
+        </div>
+      </div>
+      
+      <h3><edit-in-place value="formFields.headingAccountDetails"></edit-in-place></h3>
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountCompany"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountCountry"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountAddress1"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountAddress2"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountCity"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountRegion"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountZipCode"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="three columns"><label class="inline"><edit-in-place value="formFields.accountPhone"></edit-in-place></label></div>
+        <div class="eight columns"><div class="disabled-input"></div></div>
+      </div>
+      
+      <div class="row">
+        <div class="push-four columns">
+          <label> <input type="checkbox" id="terms_agreement" value="1" /><a><edit-in-place value="formFields.accountTerms"></edit-in-place></a> </label>
+        </div>
+      </div>
+      <button id="send" type="button" class="button" edit-in-button><edit-in-place value="formFields.accountSignUp"></edit-in-place></button>
+    </div>
+
+    <hr/>
+    <div class="row">
+        <div class="twelve columns">
+            <div class="panel">
+                <h5>Successful signup - Approved message:</h5>
+                <p><edit-in-place value="formFields.successApproved" class="twelve columns"></edit-in-place></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="panel">
+                <h5>Successful signup - Pending Approval message:</h5>
+                <p><edit-in-place value="formFields.successPending" class="twelve columns"></edit-in-place></p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+

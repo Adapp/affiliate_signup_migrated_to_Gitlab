@@ -1,0 +1,20 @@
+{
+  "name": "affiliate_signup_generator",
+  "version": "0.0.1-9",
+  "private": true,
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "subdomain": "aff_signuptest",
+  "dependencies": {
+    "express": "~3.0.0",
+    "jade": "*",
+    "connect-assets": "~2.3.3",
+    "node-native-zip": "*",
+    "handlebars": "*",
+    "q": "~0.8.12"
+  },
+  "engines": {
+    "node": ">=0.8.9"
+  }
+}

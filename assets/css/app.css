@@ -1,0 +1,105 @@
+html, body {
+  height: 100%;
+}
+
+#wrapper {
+    margin-top: 50px;
+}
+
+.contain-to-grid, .top-bar {
+  background-color: #2586C8;
+}
+
+.top-bar ul > li.divider {
+  background-color: #FFF;
+}
+
+.editMode {
+    width: 100%;
+}
+
+.editMode span {
+    cursor: pointer;
+}
+
+.editMode input {
+    display: none;
+}
+
+.editMode.active input {
+    display: inline-block;
+}
+
+.editMode.active span {
+    display: none;
+}
+
+label {
+    cursor: default;
+}
+
+.top-bar ul > li label {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 15px;
+    display: inline-block;
+}
+
+.ie8 .top-bar  input {
+    display: inline;
+    width: auto;
+    margin-right: 4px;
+}
+
+.ie8 .top-bar .name h1 a {
+  color: #fff;
+  display: block;
+  line-height: 45px;
+  font-weight: bold;
+  padding: 0 15px;
+  height: 45px;
+}
+
+div.alert-box {
+    /* a fix for the error boxes since the edit elements do not have a height */
+    padding-bottom: 20px;
+}
+
+.panel p {
+    padding-bottom: 15px;
+}
+
+.disabled-input {
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    margin: 0 0 12px 0;
+    height: 32px;
+    width: 100%;
+}
+
+.error .disabled-input {
+    border-color: #C60F13;
+    background-color: rgba(198, 15, 19, 0.1);
+}
+
+#send  {
+    margin-bottom: 15px;
+}
+
+#welcomeModal .panel p a.button {
+    margin-left: 20px;
+}
+
+#welcomeModal #closeModal {
+    margin-left: 35%;
+}

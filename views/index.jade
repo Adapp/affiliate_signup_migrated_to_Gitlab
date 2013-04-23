@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  form(action="/compile", method="POST", signup-form)
+    div(class="contain-to-grid fixed")
+      nav(class="top-bar")
+        ul
+          li.name
+            h1
+              a(href="#") HasOffers
+
+          section
+            ul.left
+              li.divider
+              li
+                label NetworkId
+                input(ng-model="formFields.networkId", name="networkId")
+              li
+                label Api Token
+                input(ng-model="formFields.networkToken", name="networkToken")
+
+            ul.right
+              li.divider
+              li
+                label
+                  a(class="small button round", ng-class="{true: '', false: 'secondary'}[errorsOn]", ng-click="alternateErrors()") {{ errorState }}
+              li
+                label
+                  button(class="small success button round", type="submit") Download Form
+
+
+    div(id="wrapper", class="row")
+        include includes/singlePage.html
+
+
+  div(id="welcomeModal", class="reveal-modal large", reveal-on-load)
+    h3 Welcome to the HasOffers Custom Affiliate Sign Up Form Generator
+    p You can use this form to customize an affiliate signup form with your own text.
+
+    h5 Click on any text to edit it. Then simply click somewhere else on the screen to see your changes instantly updated.
+
+    p You can also....
+
+    div.row
+      div(class="six columns")
+        div.panel
+          p
+            b Click on
+            a(class="small secondary button round") Show Error Text
+          | to modify all of the error text that your user will see.
+      div(class="six columns")
+        div.panel
+          p
+            b Click on
+            a(class="small success button round") Download Form
+          | to download your completed form in a zip package.
+    hr
+    div.row
+      h5 To begin simply enter your
+      div(class="six columns")
+        div(class="three columns")
+          label.inline NetworkId
+        div(class="eight columns")
+          input(ng-model="formfields.networkId")
+      div(class="six columns")
+        div(class="Three columns")
+          label.inline Api Token
+        div(class="eight columns")
+          input(ng-model="formfields.networkToken")
+
+      a(class="button success round", id="closeModal") and get started!
+
+    a(class="close-reveal-modal") x
