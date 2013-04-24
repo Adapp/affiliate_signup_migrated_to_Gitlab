@@ -31,6 +31,7 @@ if (!commander.config) {
     data = JSON.parse(data);
     app.set('port', commander.port || data.port || 3000);
     app.set('logLocation', data.logLocation);
+    app.set('errorLogLocation', data.errorLogLocation);
     app.set('maxLogSize', data.maxLogSize);
     app.set('maxLogFiles', data.maxLogFiles);
 
@@ -49,8 +50,19 @@ waitForConfig.promise.then(function() {
     if (app.get('logLocation')) {
       app.use(expressWinston.logger({
         'transports': [
+
+        ]
+      }));
+    }
+
+    app.use(app.router);
+
+    // Error log needs to come after the router since that's the most likely place for errors to occur.
+    if (app.get('errorLogLocation')) {
+      app.use(expressWinston.errorLogger({
+        'transports': [
           new winston.transports.File({
-            'filename' : path.join(__dirname, app.get('logLocation')),
+            'filename' : app.get('errorLogLocation'),
             'maxsize'  :  app.get('maxLogSize'),
             'maxFiles' : app.get('maxLogFiles')
           })
@@ -58,13 +70,8 @@ waitForConfig.promise.then(function() {
       }));
     }
 
-    app.use(app.router);
     app.use(express.static(path.join(__dirname, 'assets')));
-});
-
-
-
-
+  });
 
 
   app.get('/', function(req, res) {
@@ -83,6 +90,6 @@ waitForConfig.promise.then(function() {
   http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
   });
-})
+});
 
 

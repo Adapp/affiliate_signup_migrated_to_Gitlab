@@ -1,6 +1,7 @@
 {
   "port": 3000,
   "logLocation": "this.log",
+  "errorLogLocation": "this.error.log",
   "maxLogSize" : 250000,
   "maxLogFiles" : 2
 }
