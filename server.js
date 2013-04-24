@@ -50,7 +50,11 @@ waitForConfig.promise.then(function() {
     if (app.get('logLocation')) {
       app.use(expressWinston.logger({
         'transports': [
-
+          new winston.transports.File({
+            'filename' : app.get('logLocation'),
+            'maxsize'  :  app.get('maxLogSize'),
+            'maxFiles' : app.get('maxLogFiles')
+          })
         ]
       }));
     }
