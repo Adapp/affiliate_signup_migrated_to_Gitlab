@@ -76,14 +76,11 @@
     params = {
       'Method': 'signup',
       'Service': 'HasOffers',
-      'NetworkId': '{{ escapeQuotes networkId }}',
-      'NetworkToken': '{{ escapeQuotes networkToken }}',
       'account': account,
       'user': user
     };
 
-    // TODO: Change this when v3 goes live.
-    url = 'http://api.hasoffers.com/v3/Affiliate.jsonp';
+    url = 'http://{{escapeQuotes networkId}}.hasoffers.com/users/signup_affiliate_custom_jsonp';
     aCall = $.ajax({
       'type': 'GET',
       'url': url,
@@ -102,8 +99,8 @@
       panel.html(''); //Clear existing errors.
 
 
-      if(res.response.status === -1) {
-        var errors = res.response.errors,
+      if(res.RequestStatus === -1) {
+        var errors = res.RequestErrors,
             alerts = [];
         errorsText.show();
 
@@ -113,7 +110,7 @@
         panel.html(alerts.join(' '));
       } else {
         var msg = '';
-        if(res.response.data.Affiliate.status === 'active') {
+        if(res.AffiliateStatus === 'active') {
           msg = '{{ escapeQuotes successApproved }}';
         } else {
           msg = '{{ escapeQuotes successPending }}';
