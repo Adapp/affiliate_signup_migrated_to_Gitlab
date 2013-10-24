@@ -9,9 +9,9 @@
       'link': function(scope, el, attrs) {
 
         el.bind('submit', function(e) {
-          if(!formFields.networkId || !formFields.networkToken) {
+          if(!formFields.networkId) {
             e.preventDefault();
-            alert('You must enter the Network ID and the Network/Api Token to proceed.');
+            alert('You must enter the Network ID to proceed.');
           }
         });
       }

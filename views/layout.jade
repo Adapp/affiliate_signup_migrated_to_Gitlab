@@ -11,16 +11,15 @@ html(class="ng-app: signup;")
     link(rel="stylesheet", href="css/app.css")
     script(src="js/lib/modernizr.foundation.js")
 
-    script(type="text/javascript")
-      if(!Modernizr.borderradius) {
-        $('html').addClass('ie8');
-      }
-
     body(ng-controller="editPanelController")
       block content
 
 
       script(src="js/lib/jquery.js")
+      script(type="text/javascript")
+        if(!Modernizr.borderradius) {
+          $('html').addClass('ie8');
+        }
       script(src="js/lib/angular.min.js")
       script(src="js/lib/foundation.min.js")
       script(src="js/signup.js")
