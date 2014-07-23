@@ -87,7 +87,6 @@ waitForConfig.promise.then(function() {
       res.setHeader('Content-type', 'application/octet-stream');
       res.setHeader('Content-disposition', 'attachment; filename=custom_signup.zip');
       res.send(archive.toBuffer());
-      res.end();
     });
   });
 
