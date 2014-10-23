@@ -27,9 +27,9 @@ function compileAndArchive(localPath, zipPath, archive, context) {
 module.exports = function(context, basePath, cb) {
   var archive = new zip(),
       uncompiled = [
-          {'name': 'css/foundation.min.css', 'path': basePath + '/package/foundation.min.css'},
-          {'name': 'js/modernizr.foundation.min.js', 'path': basePath + '/package/modernizr.foundation.js'},
-          {'name': 'js/foundation.min.js', 'path': basePath + '/package/foundation.min.js'}
+          {'name': 'css/foundation.min.css', 'path': './package/foundation.min.css'},
+          {'name': 'js/modernizr.foundation.min.js', 'path': './package/modernizr.foundation.js'},
+          {'name': 'js/foundation.min.js', 'path': './package/foundation.min.js'}
       ];
 
   //Compile the html then the javascript.
