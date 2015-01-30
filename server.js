@@ -86,7 +86,7 @@ waitForConfig.promise.then(function() {
     zipper(req.body, __dirname, function(archive) {
       res.setHeader('Content-type', 'application/octet-stream');
       res.setHeader('Content-disposition', 'attachment; filename=custom_signup.zip');
-      res.send(archive.toBuffer());
+      res.send(archive);
     });
   });
 

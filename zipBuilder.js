@@ -1,6 +1,6 @@
 var fs = require('fs'),
     hb = require('handlebars'),
-    zip = require('node-native-zip'),
+    zip = require('node-zip'),
     Q = require('q');
 
 hb.registerHelper('escapeQuotes', function(entity) {
@@ -18,27 +18,42 @@ function compileAndArchive(localPath, zipPath, archive, context) {
       return;
     }
     var template = hb.compile(data);
-    archive.add(zipPath, new Buffer(template(context), 'utf8'));
+    archive.file(zipPath, new Buffer(template(context), 'utf8'));
     dfd.resolve();
+  });
+  return dfd.promise;
+}
+
+function addUncompiled(localPath, zipPath, archive) {
+  var dfd = Q.defer();
+  fs.readFile(localPath, function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      archive.file(zipPath, data);
+      dfd.resolve();
+    }
   });
   return dfd.promise;
 }
 
 module.exports = function(context, basePath, cb) {
   var archive = new zip(),
-      uncompiled = [
-          {'name': 'css/foundation.min.css', 'path': './package/foundation.min.css'},
-          {'name': 'js/modernizr.foundation.min.js', 'path': './package/modernizr.foundation.js'},
-          {'name': 'js/foundation.min.js', 'path': './package/foundation.min.js'}
-      ];
+      folderName = 'custom_signup';
+
+  archive.folder(folderName);
 
   //Compile the html then the javascript.
-  compileAndArchive(basePath + '/package/index.html', 'index.html', archive, context).then(function() {
-    return compileAndArchive(basePath + '/package/signup.js', 'js/signup.js', archive, context);
+  compileAndArchive(basePath + '/package/index.html', folderName + '/index.html', archive, context).then(function() {
+    return compileAndArchive(basePath + '/package/signup.js', folderName + '/js/signup.js', archive, context);
   }).then(function() {
-    archive.addFiles(uncompiled, function(err) {
-      if (err) {console.log(err);}
-      cb(archive);
+    var promise = Q.all([
+      addUncompiled(basePath + '/package/foundation.min.css', folderName + '/css/foundation.min.css', archive),
+      addUncompiled(basePath + '/package/modernizr.foundation.js', folderName + '/js/modernizr.foundation.min.js', archive),
+      addUncompiled(basePath + '/package/foundation.min.js', folderName + '/js/foundation.min.js', archive)
+    ]).then(function() {
+      var output = archive.generate({type:'nodebuffer', compression: 'STORE'});
+      cb(output);
     });
   });
 };
