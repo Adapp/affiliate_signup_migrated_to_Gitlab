@@ -41,8 +41,6 @@ module.exports = function(context, basePath, cb) {
   var archive = new zip(),
       folderName = 'custom_signup';
 
-  archive.folder(folderName);
-
   //Compile the html then the javascript.
   compileAndArchive(basePath + '/package/index.html', folderName + '/index.html', archive, context).then(function() {
     return compileAndArchive(basePath + '/package/signup.js', folderName + '/js/signup.js', archive, context);
@@ -54,6 +52,8 @@ module.exports = function(context, basePath, cb) {
     ]).then(function() {
       var output = archive.generate({type:'nodebuffer', compression: 'STORE'});
       cb(output);
+    }, function(err) {
+      console.log(err);
     });
   });
 };
