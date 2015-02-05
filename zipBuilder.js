@@ -13,7 +13,6 @@ function compileAndArchive(localPath, zipPath, archive, context) {
   var dfd = Q.defer();
   fs.readFile(localPath, 'utf8', function(err, data) {
     if(err) {
-      console.log(err);
       dfd.reject(err);
       return;
     }
@@ -28,11 +27,11 @@ function addUncompiled(localPath, zipPath, archive) {
   var dfd = Q.defer();
   fs.readFile(localPath, function(err, data) {
     if (err) {
-      console.log(err);
-    } else {
-      archive.file(zipPath, data);
-      dfd.resolve();
+      dfd.reject(err);
+      return;
     }
+    archive.file(zipPath, data);
+    dfd.resolve();
   });
   return dfd.promise;
 }
