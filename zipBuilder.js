@@ -12,7 +12,7 @@ hb.registerHelper('escapeQuotes', function(entity) {
 function compileAndArchive(localPath, zipPath, archive, context) {
   var dfd = Q.defer();
   fs.readFile(localPath, 'utf8', function(err, data) {
-    if(err) {
+    if (err) {
       dfd.reject(err);
       return;
     }
